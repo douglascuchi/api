@@ -1,0 +1,197 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "API - HORUS",
+    "description": "Documentação da API HORUS"
+  },
+  "host": "localhost:3000",
+  "basePath": "",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/aluno/{name}": {
+      "get": {
+        "tags": [
+          "Alunos"
+        ],
+        "summary": "Consulta todos alunos",
+        "description": "",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Nome do aluno cadastrado",
+            "value": "Douglas"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Sucesso!",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "total": {
+                  "type": "number",
+                  "example": 1
+                },
+                "microservice": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "API_ID": {
+                        "type": "number",
+                        "example": 1
+                      },
+                      "API_NOME": {
+                        "type": "string",
+                        "example": "api-dtm"
+                      },
+                      "API_VERSAO": {
+                        "type": "string",
+                        "example": "1.0.20"
+                      },
+                      "API_DESCRICAO": {
+                        "type": "string",
+                        "example": "API para trabalhar com DTM"
+                      },
+                      "API_GIT_URL": {
+                        "type": "string",
+                        "example": "...bit.com.br"
+                      },
+                      "API_PORTA": {
+                        "type": "number",
+                        "example": 3000
+                      },
+                      "API_VINCULOS": {
+                        "type": "number",
+                        "example": 1
+                      }
+                    }
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/alunos": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/aluno": {
+      "post": {
+        "tags": [
+          "Alunos"
+        ],
+        "summary": "Cadastro de alunos",
+        "description": "Cadastro de alunos do sistema da horus",
+        "parameters": [
+          {
+            "name": "json",
+            "in": "body",
+            "description": "Dados para inserir um aluno",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "number",
+                  "example": 5
+                },
+                "nome": {
+                  "type": "string",
+                  "example": "Douglas"
+                },
+                "sobrenome": {
+                  "type": "string",
+                  "example": "Eduardo"
+                },
+                "periodo": {
+                  "type": "number",
+                  "example": 5
+                },
+                "observacao": {
+                  "type": "string",
+                  "example": "teste"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Criado"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    },
+    "/aluno/{id}": {
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Erro Interno do Servidor"
+          }
+        }
+      }
+    }
+  }
+}
